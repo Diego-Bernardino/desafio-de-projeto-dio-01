@@ -1,14 +1,15 @@
 
 let stage = 1;
+
 let hero = {
     name: 'Hércules',
     experience: 0,
     rank: ''
 }
+experienceRanking()
 
 do {
-    hero.experience += xpCalc();
-    hero.rank = rankCalc();
+    experienceRanking()
     console.log(`O Herói de nome ${hero.name} está no nível de ${hero.rank} com ${hero.experience} pontos de experiência!`);
     stage++;
 } while (stage <= 5);
@@ -32,6 +33,11 @@ function xpCalc() {
             xp = 250 ;
     }
     return xp *= questsCompleted();
+}
+
+function experienceRanking() {
+    hero.experience += xpCalc();
+    hero.rank = rankCalc();
 }
 
 function rankCalc(){
