@@ -9,8 +9,8 @@ let hero = {
 experienceRanking()
 
 do {
-    experienceRanking()
     console.log(`O Herói de nome ${hero.name} está no nível de ${hero.rank} com ${hero.experience} pontos de experiência!`);
+    experienceRanking()
     stage++;
 } while (stage <= 5);
 
