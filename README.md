@@ -24,3 +24,15 @@ Se XP for maior ou igual a 10.001 = Radiante
 
 Ao final deve se exibir uma mensagem:
 "O Herói de nome **{nome}** está no nível de **{nivel}**"
+
+---
+
+# Minha Solução
+
+__*O que utilizei*__
+
+- Um **object** para armazenar os dados do herói
+- Operadores
+- **Laço de repetição** (_do while_) para simular a evolução do herói através das fases
+- **Estruturas de decisões** (_switch case e if, else if, else_) para estruturar as **funções** utlizadas para definir a experiência e o rank do herói
+- Implementei a quantidade de xp do herói na mensagem de saída sugerida pelo desafio

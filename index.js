@@ -5,13 +5,11 @@ let hero = {
     experience: 0,
     rank: ''
 }
-hero.experience += xpCalc();
-hero.rank = rankCalc();
 
 do {
-    console.log(`O Herói de nome ${hero.name} está no nível de ${hero.rank} com ${hero.experience} pontos de experiência!`);
     hero.experience += xpCalc();
     hero.rank = rankCalc();
+    console.log(`O Herói de nome ${hero.name} está no nível de ${hero.rank} com ${hero.experience} pontos de experiência!`);
     stage++;
 } while (stage <= 5);
 
