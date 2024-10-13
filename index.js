@@ -1,85 +1,86 @@
 
-let stage = 1;
-
-let hero = {
-    name: 'Hércules',
-    experience: 0,
-    rank: ''
+class hero {
+    constructor(name = 'this', experience = 0, rank = 'none') {
+        this.name = name;
+        this.experience = experience;
+        this.rank = rank;
+    }
+    questsCompleted() {
+        switch (stage) {
+            case 1:
+                return 10;
+                break;
+            case 2:
+                return 15;
+                break;
+            case 3: 
+                return 20;
+                break;
+            case 4:
+                return 22;
+                break;
+            case 5:
+                return 25;
+                break;
+            default:
+                return 30;
+        }
+    }
+    xpCalc() {
+        let xp = 0;
+        switch (stage) {
+            case 0:
+                xp = 0;
+                break
+            case 1:
+                xp = 100;
+                break;
+            case 2:
+                xp = 125;
+                break;
+            case 3:
+                xp = 155;
+                break;
+            case 4:
+                xp = 200;
+                break;
+            default:
+                xp = 250 ;
+        }
+        return xp *= this.questsCompleted();
+    }
+    rankCalc() {
+        if (this.experience <= 1000) {
+            this.rank = 'Ferro';
+        } else if (this.experience > 1000 && this.experience <= 2000) {
+            this.rank = 'Bronze';
+        } else if (this.experience > 2000 && this.experience <= 5000) {
+            this.rank = 'Prata';
+        } else if (this.experience > 5000 && this.experience <= 7000) {
+            this.rank = 'Ouro';
+        } else if (this.experience > 7000 && this.experience <= 8000) {
+            this.rank = 'Platina';
+        } else if (this.experience > 8000 && this.experience <= 9000) {
+            this.rank = 'Ascendente';
+        } else if (this.experience > 9000 && this.experience <= 10000) {
+            this.rank = 'Imortal';
+        } else {
+            this.rank = 'Radiante';
+        }
+        return this.rank;
+    }
+    experienceRanking() {
+        this.experience += this.xpCalc();
+        this.rank = this.rankCalc();
+    }
 }
-experienceRanking()
+
+let stage = 1;
+let playerId = new hero('Hércules', 0, 'None')
+playerId.experienceRanking()
 
 do {
-    console.log(`O Herói de nome ${hero.name} está no nível de ${hero.rank} com ${hero.experience} pontos de experiência!`);
-    experienceRanking()
+    console.log(`O Herói de nome ${playerId.name} está no nível de ${playerId.rank} com ${playerId.experience} pontos de experiência!`);
+    playerId.experienceRanking()
     stage++;
 } while (stage <= 5);
-
-function xpCalc() {
-    let xp = 0;
-    switch (stage) {
-        case 1:
-            xp = 100;
-            break;
-        case 2:
-            xp = 125;
-            break;
-        case 3:
-            xp = 155;
-            break;
-        case 4:
-            xp = 200;
-            break;
-        default:
-            xp = 250 ;
-    }
-    return xp *= questsCompleted();
-}
-
-function experienceRanking() {
-    hero.experience += xpCalc();
-    hero.rank = rankCalc();
-}
-
-function rankCalc(){
-    rank = '';
-    if (hero.experience <= 1000) {
-        rank = 'Ferro';
-    } else if (hero.experience > 1000 && hero.experience <= 2000) {
-        rank = 'Bronze';
-    } else if (hero.experience > 2000 && hero.experience <= 5000) {
-        rank = 'Prata';
-    } else if (hero.experience > 5000 && hero.experience <= 7000) {
-        rank = 'Ouro';
-    } else if (hero.experience > 7000 && hero.experience <= 8000) {
-        rank = 'Platina';
-    } else if (hero.experience > 8000 && hero.experience <= 9000) {
-        rank = 'Ascendente';
-    } else if (hero.experience > 9000 && hero.experience <= 10000) {
-        rank = 'Imortal';
-    } else {
-        rank = 'Radiante';
-    }
-    return rank;
-}    
-
-function questsCompleted() {
-    switch (stage) {
-        case 1:
-            return 10;
-            break;
-        case 2:
-            return 15;
-            break;
-        case 3: 
-            return 20;
-            break;
-        case 4:
-            return 22;
-            break;
-        case 5:
-            return 25;
-            break;
-        default:
-            return 30;
-    }
-}
